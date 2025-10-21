@@ -324,7 +324,7 @@ plot1
 # Este gráfico no es muy bueno para evaluar la evolución de las ventas de cada fabricante por los puntos, es mejor con geom_line
 plot2<-plot1+geom_line()
 plot2
-plot3<-ggplot(data=DatosEjer4,aes(x=Fecha,y=Ventas,color=Fabricante,linetype=Fabricante))+geom_line()
+plot3<-ggplot(data=DatosEjer4,aes(x=Fecha,y=Ventas,color=Fabricante))+geom_point()+geom_line(aes(linetype=Fabricante))
 
 plot3+ggtitle("Ventas en el tiempo de distintos fabricantes")
 ggsave("figs/Ejercicio4.pdf")
@@ -372,6 +372,9 @@ Añadir barras de error a un gráfico de línea.
 ```{r Solucion ejercicio 5}
 
 
+
+ggsave("figs/Ejercicio5.pdf")
+
 ```
 
 ### **Ejercicio 6 **
@@ -383,6 +386,26 @@ El fichero ``iceRiver.RData`` contiene información del caudal de dos ríos isla
   * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio5.pdf``.
 
 ```{r Solucion ejercicio 6 }
+
+rm(list=ls())
+library(ggplot2)
+# library(latex2exp)
+load("data/iceRiver.RData")
+# ?tseries::ice.river
+# CUIDADO: TIME NO ES UNA VARIABLE DE TIPO TIEMPO (ES FLOAT), PERO ESTÁ BIEN PUESTO PARA QUE NO HAYA QUE PASARLO A ESE FORMATO
+
+
+
+# ggplot(data=ice.river.df,aes(x=time,y=flow.vat))+geom_point(color="red")
+# ggplot(data=ice.river.df,aes(x=time,y=flow.jok))+geom_point(color="blue")
+
+ggplot(data=ice.river.df,aes(x=time))+geom_line(aes(y=flow.vat),color="red")+geom_line(aes(y=flow.jok),color="blue")+labs(title="Caudales de los ríos islandeses Vatnsdalsa (azul) y Jukulsa Eystri (rojo)",y="Caudal$(m^3/s)$",caption="Fuente")
+
+
+
+
+ggsave("figs/Ejercicio6.pdf")
+
 
 
 ```
@@ -401,6 +424,8 @@ En esta sección vamos a utilizar **ggplot2** para representar distribuciones de
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio7.pdf``.
 
 ```{r Solucion ejercicio 7}
+
+
 
 ```
 
