@@ -162,8 +162,9 @@ p2
 load("data/weatherAUS.RData")
 grafico1<-ggplot(data=ds,aes(x = MinTemp, y = MaxTemp))+geom_point()
 grafico2<-ggplot(data=ds,aes(x = MinTemp, y = MaxTemp,color=RainTomorrow))+geom_point()
-grafico2+ggtitle("Gráfica ds MaxTemp y MinTemp")
+grafico3<-grafico2+ggtitle("Gráfica ds MaxTemp y MinTemp")
 ggsave('figs/Ejercicio1.pdf')
+grafico3
 ```
 
 ### **Ejercicio 2**
@@ -176,8 +177,17 @@ ggsave('figs/Ejercicio1.pdf')
 
 ```{r Solucion ejercicio 2}
 
+ggplot(data=ds,aes(x = Temp9am, y = Pressure9am,shape=RainToday,color=RainToday))+geom_point() +labs(title = "Representación de la presión y la temperatura",
+       subtitle = "Relación entre la presión y la temperatura a las 9 am",
+       x = "Temperatura 9am",
+       y = "Presión 9am",
+       caption = "Presión Temperatura 9am")
+
 ggsave('figs/Ejercicio2.pdf')
 ```
+Se observa mejor la representación con los colores que con la forma
+
+
 
 ### **Ejercicio 3**
 
