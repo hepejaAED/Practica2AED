@@ -215,10 +215,23 @@ library(ggplot2)
 load("data/iris_tidy.Rdata")
 str(iris.tidy)
 
-iris.grafico1<-ggplot(data=iris.tidy,aes(x=Species,y=Value))+geom_boxplot()
-iris.grafico1<-ggplot(data=iris.tidy,aes(x=Part,y=Value))+geom_boxplot()
-iris.grafico1
-# ggsave('figs/Ejercicio3.pdf') # se almacena el último gráfico generado
+# iris.grafico1<-ggplot(data=iris.tidy,aes(x=Species,y=Value))+geom_boxplot()
+# 
+# iris.grafico2<-ggplot(data=iris.tidy,aes(x=Part,y=Value,color=Part))+geom_boxplot()
+# 
+# iris.grafico3<-iris.grafico2+facet_grid(rows = vars(Measure))
+
+iris.grafico1<-ggplot(data=iris.tidy,aes(x=Species,y=Value))+geom_point()
+
+iris.grafico2<-ggplot(data=iris.tidy,aes(x=Part,y=Value,color=Part))+geom_point()
+
+iris.grafico3<-iris.grafico2+facet_grid(.~Measure)
+
+# Añadimos un poco de ruido aleatorio para observar mejor la densidad de puntos en cada parte
+iris.grafico4<-ggplot(data=iris.tidy,aes(x=Part,y=Value,color=Part))+geom_jitter()
+iris.grafico4
+
+ggsave('figs/Ejercicio3.pdf') # se almacena el último gráfico generado
 ```
 
 ## Gráficos de línea con **ggplot2**
