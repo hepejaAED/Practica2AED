@@ -408,7 +408,7 @@ El fichero ``iceRiver.RData`` contiene información del caudal de dos ríos isla
 
 rm(list=ls())
 library(ggplot2)
-# library(latex2exp)
+library(latex2exp)
 load("data/iceRiver.RData")
 # ?tseries::ice.river
 # CUIDADO: TIME NO ES UNA VARIABLE DE TIPO TIEMPO (ES FLOAT), PERO ESTÁ BIEN PUESTO PARA QUE NO HAYA QUE PASARLO A ESE FORMATO
@@ -418,7 +418,7 @@ load("data/iceRiver.RData")
 # ggplot(data=ice.river.df,aes(x=time,y=flow.vat))+geom_point(color="red")
 # ggplot(data=ice.river.df,aes(x=time,y=flow.jok))+geom_point(color="blue")
 
-ggplot(data=ice.river.df,aes(x=time))+geom_line(aes(y=flow.vat),color="red")+geom_line(aes(y=flow.jok),color="blue")+labs(title="Caudales de los ríos islandeses Vatnsdalsa (azul) y Jukulsa Eystri (rojo)",y="Caudal$(m^3/s)$",caption="Fuente")
+ggplot(data=ice.river.df,aes(x=time))+geom_line(aes(y=flow.vat),color="red")+geom_line(aes(y=flow.jok),color="blue")+labs(title="Caudales de los ríos islandeses Vatnsdalsa (azul) y Jukulsa Eystri (rojo)",y=TeX("Caudal $(m^3/s)$"),caption="Fuente")
 
 
 
