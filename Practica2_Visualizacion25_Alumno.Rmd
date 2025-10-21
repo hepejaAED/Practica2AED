@@ -559,6 +559,29 @@ ggplot(data=dataset_hist1, aes(x=AGE)) +
 
 ```{r Solucion ejercicio 8}
 # 
+rm(list=ls())
+library(readr)
+
+url<-"http://assets.datacamp.com/blog_assets/chol.txt"
+chol <- read_table(url)
+  
+  # # Usamos after_stat(density) o ..density.. (sintaxis antigua) para mapear Y a la densidad
+  # geom_histogram(aes(y = after_stat(density)), breaks = seq(155, 195, by = 2), alpha = 0.5, color = "red", fill = "pink") +
+  # geom_density(color = "green", linewidth = 1) + # El ancho de línea (size) es mejor con linewidth
+  # coord_cartesian(xlim = c(155, 195)) +
+  # labs(title = "Histograma y Densidad de la Altura (Escala de Densidad)",
+  #      x = "Altura (cm)",
+  #      y = "Densidad")
+
+
+
+plot1<-ggplot(data=chol,aes(x=HEIGHT))+geom_histogram(aes(y = after_stat(density)), breaks = seq(155, 195, by = 2), alpha = 0.5, color = "red")+geom_density(color="green")+coord_cartesian(xlim = c(155, 195)) +labs(title="Histograma de la variable Altura",x="Altura (cm)",y="Frecuencia")
+plot1
+
+plot2<-plot1+facet_grid(rows=vars(MORT))
+plot2
+
+ggsave("figs/Ejercicio8.pdf")
 
 ```
 
