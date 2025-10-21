@@ -314,6 +314,20 @@ ggplot(data=Dosis.Medicina2, aes(x=Dosis, y=Efectividad, group=Complemento)) +
 
 ```{r Solucion ejercicio 4}
 
+rm(list = ls())
+library(ggplot2)
+load("data/Ejercicio4_Data.Rdata")
+str(DatosEjer4)
+
+plot1<-ggplot(data=DatosEjer4,aes(x=Fecha,y=Ventas,color=Fabricante))+geom_point()
+plot1
+# Este gráfico no es muy bueno para evaluar la evolución de las ventas de cada fabricante por los puntos, es mejor con geom_line
+plot2<-plot1+geom_line()
+plot2
+plot3<-ggplot(data=DatosEjer4,aes(x=Fecha,y=Ventas,color=Fabricante,linetype=Fabricante))+geom_line()
+
+plot3+ggtitle("Ventas en el tiempo de distintos fabricantes")
+ggsave("figs/Ejercicio4.pdf")
 ```
 
 ## Barras de error con **ggplot2**
