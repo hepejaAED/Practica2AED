@@ -222,14 +222,19 @@ str(iris.tidy)
 # iris.grafico3<-iris.grafico2+facet_grid(rows = vars(Measure))
 
 iris.grafico1<-ggplot(data=iris.tidy,aes(x=Species,y=Value))+geom_point()
+iris.grafico1
+iris.grafico2 <- ggplot(data = iris.tidy, aes(x = Species, y = Value, color = Part)) +geom_point()
+iris.grafico2
+iris.grafico3<-ggplot(data=iris.tidy,aes(x=Part,y=Value,color=Part))+geom_point()
+iris.grafico3
 
-iris.grafico2<-ggplot(data=iris.tidy,aes(x=Part,y=Value,color=Part))+geom_point()
-
-iris.grafico3<-iris.grafico2+facet_grid(.~Measure)
-
+iris.grafico4_filas<-iris.grafico2 + facet_grid(rows = vars(Measure))
+iris.grafico4_filas
+iris.grafico4_columnas<-iris.grafico2 + facet_grid(cols = vars(Measure))
+iris.grafico4_columnas
 # Añadimos un poco de ruido aleatorio para observar mejor la densidad de puntos en cada parte
-iris.grafico4<-ggplot(data=iris.tidy,aes(x=Part,y=Value,color=Part))+geom_jitter()
-iris.grafico4
+iris.grafico5<-ggplot(data=iris.tidy,aes(x=Species,y=Value,color=Part))+geom_jitter()+facet_grid(cols = vars(Measure))
+iris.grafico5
 
 ggsave('figs/Ejercicio3.pdf') # se almacena el último gráfico generado
 ```
