@@ -185,7 +185,7 @@ ggplot(data=ds,aes(x = Temp9am, y = Pressure9am,shape=RainToday,color=RainToday)
 
 ggsave('figs/Ejercicio2.pdf')
 ```
-Se observa mejor la representación con los colores que con la forma
+Se observa mejor la información que introduce la variable ``RainToday``con la representación con los colores que con la forma.
 
 
 
